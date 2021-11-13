@@ -13,11 +13,11 @@ load_dotenv()
 client = commands.Bot(command_prefix=";")
 slash = SlashCommand(client, sync_commands=True)
 
-main_currency_api = os.environ['binancecoin']
-main_currency_symbol = os.environ['BNB']
-currency_to_show = os.environ['USD']
-currencies_to_watch = os.environ['IDR']
-discord_token = os.environ['OTA5MDM3MzkxNDU1NTg0Mjc2.YY-dCw.qdYBwijmdix_lWy1XqmoJ4Rxi40']
+main_currency_api = os.environ['MAIN_CURRENCY_NAME']
+main_currency_symbol = os.environ['MAIN_CURRENCY_SYMBOL']
+currency_to_show = os.environ['CURRENCY_TO_SHOW']
+currencies_to_watch = os.environ['VS_CURRENCIES']
+discord_token = os.environ['DISCORD_TOKEN']
 
 coingecko = f"https://api.coingecko.com/api/v3/simple/price?ids={main_currency_api}&vs_currencies={currencies_to_watch}"
 
