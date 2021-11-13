@@ -60,6 +60,7 @@ async def task_update_activity():
         for channel_id in split_channels_id:
             print(channel_id)
             for category in guild.categories:
+                print(category.id)
                 if category.id == channel_id:
                     for channel in category.channels:
                         print(channel.name)
