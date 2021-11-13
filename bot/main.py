@@ -61,7 +61,7 @@ async def task_update_activity():
             for category in guild.categories:
                 if category.id != channel_id:
                     for channel in category.channels:
-                    print(channel.name)
+                        print(channel.name)
 
     status = []
     secondary_currency = await watch_secondary_currencies()
