@@ -61,7 +61,7 @@ async def task_update_activity():
             print(f'keys : {channel_id}')
             for category in guild.categories:
                 print(f'categories : {category.id}')
-                if category.id == channel_id:
+                if str(category.id) == channel_id:
                     print(f'match : {category}')
                     for channel in category.channels:
                         print(channel.name)
