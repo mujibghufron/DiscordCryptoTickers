@@ -59,7 +59,7 @@ async def task_update_activity():
         await guild.me.edit(nick=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
         for channel in guild.channels:
             if channel.category != "None":
-                print(channel.category.id)
+                print(channel.category)
 
     status = []
     secondary_currency = await watch_secondary_currencies()
