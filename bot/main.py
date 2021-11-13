@@ -69,11 +69,11 @@ async def task_update_activity():
             for category in guild.categories:
                 print(f'categories : {category.id}')
                 if str(category.id) == channel_id:
-                    print(f'match : {category}')
+                    print(category.channels)
 #                     for channel in category.channels:
-                        await channel[0].edit(name=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
-                        await channel[1].edit(name=status_name)
-#                         print(channel.name)
+#                         await channel[0].edit(name=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
+#                         await channel[1].edit(name=status_name)
+#                         print(channel)
 
 
 
