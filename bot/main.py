@@ -58,6 +58,7 @@ async def task_update_activity():
     for guild in client.guilds:
         await guild.me.edit(nick=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
         for channel in guild.channels:
+            if channel.category != "None":
                 print(channel.category.id)
 
     status = []
