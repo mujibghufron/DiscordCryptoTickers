@@ -54,6 +54,13 @@ async def watch_secondary_currencies():
 
 @tasks.loop(seconds=5.0)
 async def task_update_activity():
+    status = []
+    secondary_currency = await watch_secondary_currencies()
+    for data in secondary_currency:
+        status_name = f"{data['value']:,} {data['symbol'].upper()}"
+        status.append(status_name)
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=random.choice(status)))
+    
     split_channels_id = channels_id.split(',')
     for guild in client.guilds:
         await guild.me.edit(nick=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
@@ -63,15 +70,11 @@ async def task_update_activity():
                 print(f'categories : {category.id}')
                 if str(category.id) == channel_id:
                     print(f'match : {category}')
-                    for channel in category.channels:
-                        print(channel.name)
+#                     for channel in category.channels:
+                        await channel[0].edit(name=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
+                        await channel[1].edit(name=status_name)
+#                         print(channel.name)
 
-    status = []
-    secondary_currency = await watch_secondary_currencies()
-    for data in secondary_currency:
-        status_name = f"{data['value']:,} {data['symbol'].upper()}"
-        status.append(status_name)
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=random.choice(status)))
 
 
 client.run(discord_token)
