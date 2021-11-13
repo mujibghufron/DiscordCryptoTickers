@@ -17,7 +17,7 @@ main_currency_api = os.environ['binancecoin']
 main_currency_symbol = os.environ['BNB']
 currency_to_show = os.environ['USD']
 currencies_to_watch = os.environ['IDR']
-discord_token = os.environ['OTA5MDM3MzkxNDU1NTg0Mjc2.YY-dCw.IA6xjrvbxCCRpw2lYpBj_k8lCFE']
+discord_token = os.environ['OTA5MDM3MzkxNDU1NTg0Mjc2.YY-dCw.CIsJrvlJxDl1wOXc0RqmfMsCtSM']
 
 coingecko = f"https://api.coingecko.com/api/v3/simple/price?ids={main_currency_api}&vs_currencies={currencies_to_watch}"
 
