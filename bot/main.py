@@ -57,9 +57,9 @@ async def task_update_activity():
     split_channels_id = channels_id.split(',')
     for guild in client.guilds:
         await guild.me.edit(nick=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
-        for channel in guild.channels:
-            if channel.category != "None":
-                print(channel.category)
+        for category in guild.categories:
+#             if channel.category != "None":
+                print(category.id)
 
     status = []
     secondary_currency = await watch_secondary_currencies()
