@@ -18,6 +18,7 @@ main_currency_symbol = os.environ['MAIN_CURRENCY_SYMBOL']
 currency_to_show = os.environ['CURRENCY_TO_SHOW']
 currencies_to_watch = os.environ['VS_CURRENCIES']
 discord_token = os.environ['DISCORD_TOKEN']
+channels_id = os.environ['CHANNELS_ID']
 
 coingecko = f"https://api.coingecko.com/api/v3/simple/price?ids={main_currency_api}&vs_currencies={currencies_to_watch}"
 
@@ -53,8 +54,13 @@ async def watch_secondary_currencies():
 
 @tasks.loop(seconds=5.0)
 async def task_update_activity():
+    split_channels_id = channels_id.split(',')
     for guild in client.guilds:
         await guild.me.edit(nick=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
+        for channel in client.guild.channels:
+            for channel_id in split_channels_id:
+                if channel.category == channel_id:
+                    print(channel.category.channels)
 
     status = []
     secondary_currency = await watch_secondary_currencies()
