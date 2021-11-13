@@ -4,7 +4,8 @@ from itertools import cycle
 
 import aiohttp
 import discord
-import random
+import logging
+
 from discord.ext import commands, tasks
 from discord_slash import SlashCommand
 from dotenv import load_dotenv
@@ -60,6 +61,7 @@ async def task_update_activity():
         for channel in guild.channels:
             for channel_id in split_channels_id:
                 if channel.category == channel_id:
+                    logging.debug('This is a debug message')
                     print(channel.category.channels)
 
     status = []
