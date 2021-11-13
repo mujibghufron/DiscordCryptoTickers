@@ -4,7 +4,6 @@ from itertools import cycle
 
 import aiohttp
 import discord
-import logging
 
 from discord.ext import commands, tasks
 from discord_slash import SlashCommand
@@ -59,10 +58,7 @@ async def task_update_activity():
     for guild in client.guilds:
         await guild.me.edit(nick=f"{(await value_of_currency_to_show()):,} {currency_to_show.upper()}/{main_currency_symbol}")
         for channel in guild.channels:
-            for channel_id in split_channels_id:
-                if channel.category == channel_id:
-                    logging.debug('This is a debug message')
-                    print(channel.category.channels)
+                print(channel.category.id)
 
     status = []
     secondary_currency = await watch_secondary_currencies()
